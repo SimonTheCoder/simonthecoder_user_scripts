@@ -19,12 +19,13 @@ function get_image()
         console.log("[LS]no image found!!!");
         return 0;
     }
-    var image_src = image_list[0].src;
+    var image_src = image_list[image_list.length-1].src;
     console.log("[LS]image src = "+image_src);
     var temp_a=document.createElement('a');
     document.body.appendChild(temp_a);
-    temp_a.href=image_src ;
+    temp_a.href=image_src.split("=")[0] + "=w4096-h4096-rw-no";
     temp_a.click();
+    document.removeChild(temp_a);
 }
 
 

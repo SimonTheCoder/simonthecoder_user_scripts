@@ -23,7 +23,7 @@ function get_image()
     console.log("[LS]image src = "+image_src);
     var temp_a=document.createElement('a');
     document.body.appendChild(temp_a);
-    temp_a.href=image_src.split("=")[0] + "=w4096-h4096-rw-no";
+    temp_a.href=image_src.split("=")[0] + "=s0-d-ip";
     temp_a.click();
     document.removeChild(temp_a);
 }

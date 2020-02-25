@@ -6,7 +6,7 @@
 // @author       Simon Shi
 // @match        *
 // @grant        unsafeWindow
-// @run-at       context-menu
+// @run-at       document-body
 // ==/UserScript==
 
 (function() {
@@ -27,10 +27,17 @@
         if(url_text.startsWith("ed2k:") || url_text.startsWith("magnet")){
             split_count = split_count + 1
             results.push(url_text)
-            if(split_count % 15 == 0){
-                results_text = results_text + "\n\n\n\n" + decodeURI(url_text)
-            }else{
-                results_text = results_text + "\n" + decodeURI(url_text)
+            try{
+                if(split_count % 15 == 0){
+
+                    results_text = results_text + "\n\n\n\n" + decodeURI(url_text)
+                }else{
+                    results_text = results_text + "\n" + decodeURI(url_text)
+                }
+            }catch(err){
+                console.log(err)
+                console.log(url_text)
+                results_text = results_text + "\n" + url_text
             }
         }
     }

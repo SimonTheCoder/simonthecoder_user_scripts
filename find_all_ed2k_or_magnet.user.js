@@ -4,9 +4,10 @@
 // @version      0.1
 // @description  find all ed2k,magnet links
 // @author       Simon Shi
+// @include      *
 // @match        *
 // @grant        unsafeWindow
-// @run-at       document-body
+// @run-at       document-end
 // ==/UserScript==
 
 (function() {
@@ -40,6 +41,10 @@
                 results_text = results_text + "\n" + url_text
             }
         }
+    }
+    if(split_count<=0){
+        console.log("No ed2k or magnet found. return.")
+        return;
     }
     console.log(results)
     var newDiv = document.createElement("div");

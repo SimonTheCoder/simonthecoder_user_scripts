@@ -12,13 +12,16 @@
   'use strict';
 
   // Get the current server address
-  const serverAddress = window.location.hostname;
+  var serverAddress = window.location.hostname;
 
   // Replace localhost URLs with the full server address, preserving the original port from the URL
   const replaceURLs = () => {
     const elements = document.querySelectorAll('a[href*="0.0.0.0:"]');
     if(elements.length == 0) return;
     console.log("find elemnt:", elements);
+    if(document.title.match(/_67/)!=null){
+      serverAddress = "192.168.1.67";
+    }
     for (const element of elements) {
       const url = element.href;
       const replacedURL = url.replace('0.0.0.0:', `${serverAddress}:`);
